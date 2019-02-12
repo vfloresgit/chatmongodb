@@ -1,24 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+//Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+//Material
+import { MaterialModule } from './material';
+
+
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
 import { ChatComponent } from './components/chat/chat.component';
 import { MenuComponent } from './directivas/menu/menu.component';
+import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatButtonModule, 
-    MatCheckboxModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class PizzaPartyAppModule { }
+export class AppModule { }

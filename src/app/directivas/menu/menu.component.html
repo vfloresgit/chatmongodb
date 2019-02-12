@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">  
+        <mat-toolbar-row>
+          <span>Third Line</span>
+          <span class="example-spacer"></span>
+          <mat-icon class="example-icon"><a href="http://faztweb.com" target="_blank">tab</a></mat-icon>
+          <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>view_headline</mat-icon>
+          </button>
+     
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </mat-toolbar-row>
+</mat-toolbar>
