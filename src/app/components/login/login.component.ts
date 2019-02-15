@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
         this.email.hasError('email') ? 'Not a valid email' :
             '';
   }
+  
+  hide = true;
 
   constructor() { }
 
