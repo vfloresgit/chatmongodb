@@ -7,7 +7,7 @@
  
 
     <mat-form-field class="example-full-width">
-      <textarea matInput [(ngModel)]="mensaje" (keyup.enter)="enviarMensaje()" placeholder="Escribe tu mensaje..."></textarea>
+      <textarea matInput (keyup.enter)="enviarMensaje()" placeholder="Escribe tu mensaje..."></textarea>
     </mat-form-field>
     
     <button mat-button name="btn-ingresar">Comentar</button> 

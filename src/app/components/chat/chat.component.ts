@@ -25,12 +25,12 @@ export class ChatComponent implements OnInit {
   
   enviarMensaje(){
 
-    const message = {
+    const mensaje = {
       userName: 'Anonimous',
       message: this.message
     };
 
-    this.socketService.emit('newMessage',message);
+    this.socketService.emit('newMessage',mensaje);
     this.message = '';
     
 
