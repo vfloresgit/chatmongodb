@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketService } from 'src/app/services/socket.service';
+
 
 @Component({
   selector: 'app-chat',
@@ -8,30 +8,29 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class ChatComponent implements OnInit {
   
-  public listaMensajes = [];
-  public message = '';
+  public listaMensajes = [
+    {comment:"Hola Laura me gustas"},
+    {comment:"Hola Victor tu tambien me gustas"},
+  ];
+  public mensaje = '';
 
   constructor(
-    private socketService: SocketService
+   
   ) { }
 
   ngOnInit() {
 
-    this.socketService.on('newMessage',(data)=>{
-      this.listaMensajes.push(data);  
-  });
+  //   this.socketService.on('newMessage',(data)=>{
+  //     this.listaMensajes.push(data);  
+  // });
  
   }
   
   enviarMensaje(){
 
-    const mensaje = {
-      userName: 'Anonimous',
-      message: this.message
-    };
-
-    this.socketService.emit('newMessage',mensaje);
-    this.message = '';
+     var data = {comment: this.mensaje};
+    this.listaMensajes.push(data); 
+    this.mensaje = '';
     
 
   }

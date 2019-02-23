@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { MenuComponent } from './directivas/menu/menu.component';
 import { LoginComponent } from './components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
@@ -28,6 +28,7 @@ const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     APP_ROUTING,
     MaterialModule,
