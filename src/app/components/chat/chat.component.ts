@@ -1,3 +1,4 @@
+import { SocketService } from 'src/app/services/socket.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -8,30 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
   
-  public listaMensajes = [
-    {comment:"Hola Laura me gustas"},
-    {comment:"Hola Victor tu tambien me gustas"},
-  ];
+  // public listaMensajes = [
+  //   {comment:"Hola Laura me gustas"},
+  //   {comment:"Hola Victor tu tambien me gustas"},
+  // ];
+  public listaMensajes = [];
   public mensaje = '';
 
   constructor(
+    private socketService: SocketService
    
   ) { }
 
   ngOnInit() {
 
-  //   this.socketService.on('newMessage',(data)=>{
-  //     this.listaMensajes.push(data);  
-  // });
+    this.socketService.on('nuevoMensaje',(data)=>{
+      this.listaMensajes.push(data);  
+  });
  
   }
   
   enviarMensaje(){
 
-     var data = {comment: this.mensaje};
-    this.listaMensajes.push(data); 
+    const comunicacion = {
+      
+      comment: this.mensaje
+
+    }
+
+    this.socketService.emit('nuevoMensaje', comunicacion);
     this.mensaje = '';
+
+    //  var data = {comment: this.mensaje};
+    // this.listaMensajes.push(data); 
+    // this.mensaje = '';s
     
+
 
   }
   

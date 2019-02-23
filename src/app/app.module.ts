@@ -13,6 +13,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { MenuComponent } from './directivas/menu/menu.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BarraLateralContactosComponent } from './directivas/barra-lateral-contactos/barra-lateral-contactos.component';
 
 
 const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
@@ -23,7 +24,8 @@ const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
     AppComponent,
     ChatComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    BarraLateralContactosComponent
   ],
   imports: [
     BrowserModule,
