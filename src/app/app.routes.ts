@@ -1,10 +1,10 @@
+import { BarraLateralContactosComponent } from './directivas/barra-lateral-contactos/barra-lateral-contactos.component';
 import { LoginComponent } from './components/login/login.component';
-import { ChatComponent } from './components/chat/chat.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const APP_ROUTER: Routes = [
   
-     {path:'chat', component: ChatComponent},
+     {path:'chatservice', component: BarraLateralContactosComponent},
      {path:'login', component: LoginComponent}
 ];
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-barra-lateral-contactos',
   templateUrl: './barra-lateral-contactos.component.html',
@@ -7,7 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraLateralContactosComponent implements OnInit {
 
-  constructor() { }
+  
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
   }

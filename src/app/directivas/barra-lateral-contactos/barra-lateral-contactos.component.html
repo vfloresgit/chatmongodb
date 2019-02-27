@@ -4,10 +4,49 @@
   <a mat-list-item href="..." > Laura Laura </a>
   <a mat-list-item href="..." > Victor Flores </a>
   <a mat-list-item href="..." >  Silva Flores </a>
-  <a mat-list-item href="..." >  Stefanny Añanca </a>
+  <a mat-list-item href="..." async) ? 'over' : 'side'"
+        [opened]="!(isHandse async) ? 'over' : 'side'"
+        [opened]="!(isHandse >  Stefanny Añanca </a>
 </mat-nav-list>
 
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>Drawer content</mat-drawer>
   <mat-drawer-content>Main content</mat-drawer-content>
 </mat-drawer-container> -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="!(isHandset$ | async)">
+      <mat-toolbar>CONTACTOS</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item href="#">Victor Hugo Flores</a>
+            
+        <a mat-list-item href="#">Jassith Garcia</a>
+        <a mat-list-item href="#">Maira Calixto</a>
+        <a mat-list-item href="#">Shakira Gamarra</a>
+        <a mat-list-item href="#">Arnaldo Cesareti</a>
+        <a mat-list-item href="#">Mijael Zegarra</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+     
+      <mat-toolbar color="primary">
+
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <!-- <span>angularprueba</span> -->
+      </mat-toolbar>
+       
+      <app-chat></app-chat>
+
+      <!-- Add Content Here -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
