@@ -1,3 +1,4 @@
+import { UsuariosService } from './services/usuarios.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -36,7 +37,7 @@ const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
     MaterialModule,
     SocketIoModule.forRoot(config) 
   ],
-  providers: [],
+  providers: [UsuariosService],
   bootstrap: [AppComponent]
 })
 
