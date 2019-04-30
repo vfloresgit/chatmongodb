@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 //forms
 import {FormControl, Validators} from '@angular/forms';
@@ -20,9 +21,41 @@ export class LoginComponent implements OnInit {
   
   hide = true;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
+
+  login(credenciales){
+      
+    // console.log(credenciales)
+    this.authService.login(credenciales).subscribe(
+      (result: any)=>{
+
+        
+        console.log("Usuario Logeado")
+        // Swal({
+        //   text: 'Logeado correctamente',
+        //   type: 'success',
+        // });
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('email',result.email)
+        
+      },
+      (err)=>{
+
+        
+        console.log("Usuario no autorizado")
+        // Swal({
+        //   text: err.error.message,
+        //   type: 'error',
+        // });
+      }
+    )  
+    
+  }
+
 
 }

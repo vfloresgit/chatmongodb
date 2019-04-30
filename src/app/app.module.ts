@@ -1,6 +1,8 @@
 import { UsuariosService } from './services/usuarios.service';
+import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 //Animations
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -30,15 +32,16 @@ const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     APP_ROUTING,
     MaterialModule,
-    SocketIoModule.forRoot(config) 
+    SocketIoModule.forRoot(config)
   ],
-  providers: [UsuariosService],
-  bootstrap: [AppComponent]
+  providers: [UsuariosService,AuthService],
+  bootstrap: [AppComponent] 
 })
 
 export class AppModule { }

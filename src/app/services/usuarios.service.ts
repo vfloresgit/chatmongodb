@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-@Injectable({
+import { environment } from 'src/environments/environment';
+@Injectable(
+  {
   providedIn: 'root'
-})
+}
+)
 export class UsuariosService {
 
   constructor(
@@ -12,10 +14,14 @@ export class UsuariosService {
   
   ) { }
 
-  lista(){
+  getAll(){
 
-    return this.http.get('http://localhost:3000/api/usuarios/listar');
+    return this.http.get(`${environment.baseUrl}usuarios/getAll`);
 
+  }
+
+  getUser(email){
+    return this.http.post(`${environment.baseUrl}usuarios/getUser`, email);
   }
 
 }

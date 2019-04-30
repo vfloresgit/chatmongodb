@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+
+<app-login *ngIf="!authService.IsLogged()"></app-login>
+
+<div *ngIf="authService.IsLogged()">
+    <app-barra-lateral-contactos></app-barra-lateral-contactos>
+</div>
+
