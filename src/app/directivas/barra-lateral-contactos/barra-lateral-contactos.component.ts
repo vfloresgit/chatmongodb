@@ -4,6 +4,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+// import { ChatComponent } from '../../components/chat/chat.component';
+import { MensajesService } from 'src/app/services/mensajes.service';
 
 @Component({
   selector: 'app-barra-lateral-contactos',
@@ -19,15 +21,18 @@ export class BarraLateralContactosComponent implements OnInit {
     );
     public listUsers = []
     public dataUser = []
-    
+    public listaMensajes = [];
 
   constructor(    
     private breakpointObserver: BreakpointObserver,
     public authService: AuthService,
-    private usuarioServices: UsuariosService
+    private usuarioServices: UsuariosService,
+    // private chatComponent: ChatComponent,
+    public mensajeService: MensajesService
   ) { }
 
   ngOnInit() {
+    
 
     const email_user = {"email":localStorage.getItem("email")}
 
@@ -59,6 +64,37 @@ export class BarraLateralContactosComponent implements OnInit {
     )
 
 
+  }
+
+  // mensajesDeUsuario(email_contact){
+  
+    
+  //   var email_user = localStorage.getItem("email"); 
+    
+  //   const data = this.chatComponent.listarMensajes(email_contact, email_user)
+
+
+
+
+  // }
+
+  
+  listarMensajes(email_contact){
+
+    var email_user = localStorage.getItem("email"); 
+
+    this.mensajeService.listadoMensajes(email_contact, email_user).subscribe(
+      (mensajes: any) => {
+        
+       this.listaMensajes = mensajes;
+
+      },
+      (err) => {
+
+
+      }
+      
+    );
   }
 
 }

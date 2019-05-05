@@ -24,7 +24,8 @@
 
         <div *ngFor = "let list of listUsers">
 
-        <a mat-list-item href="#">{{list.nombres}}</a>
+        <a mat-list-item 
+        (click)="listarMensajes(list.email)">{{list.nombres}}</a>
         
       </div>
 <!--             
@@ -53,7 +54,7 @@
         <!-- <span>angularprueba</span> -->
       </mat-toolbar>
        
-      <app-chat></app-chat>
+      <app-chat [listaMensajes]="listaMensajes"></app-chat>
 
       <!-- Add Content Here -->
     </mat-sidenav-content>

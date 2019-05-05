@@ -21,6 +21,7 @@ export class UsuariosService {
   }
 
   getUser(email){
+    
     return this.http.post(`${environment.baseUrl}usuarios/getUser`, email);
   }
 

@@ -1,5 +1,6 @@
 import { SocketService } from 'src/app/services/socket.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+// import { MensajesService } from 'src/app/services/mensajes.service';
 
 
 @Component({
@@ -13,11 +14,13 @@ export class ChatComponent implements OnInit {
   //   {comment:"Hola Laura me gustas"},
   //   {comment:"Hola Victor tu tambien me gustas"},
   // ];
-  public listaMensajes = [];
+  @Input() listaMensajes: any;
+  // public listaMensajes = [];
   public mensaje = '';
 
   constructor(
     private socketService: SocketService
+    // public mensajeService: MensajesService
    
   ) { }
 
@@ -25,27 +28,26 @@ export class ChatComponent implements OnInit {
 
     this.socketService.on('nuevoMensaje',(data)=>{
       this.listaMensajes.push(data);  
-  });
- 
+    });
+
+  
+
   }
   
   enviarMensaje(){
 
     const comunicacion = {
       
-      comment: this.mensaje
+      mensaje: this.mensaje
 
     }
 
     this.socketService.emit('nuevoMensaje', comunicacion);
     this.mensaje = '';
 
-    //  var data = {comment: this.mensaje};
-    // this.listaMensajes.push(data); 
-    // this.mensaje = '';s
-    
 
 
   }
+
   
 }
