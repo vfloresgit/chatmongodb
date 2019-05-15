@@ -5,13 +5,18 @@
     <label></label>
   </div>
 
+  <!-- <div *ngFor="let contact of dataContact">
+  <h1>{{contact.email}}</h1>
+  </div> -->
 
   <div class="card-body">
 
     <div *ngFor="let item of listaMensajes">
-      <span class="badge badge-primary">Mensaje</span>
+    
+      <span class="badge badge-primary">{{item.emisor.nombre}}</span>
       <p>{{item.mensaje}}</p>
       <hr>
+    
     </div>
    
 
@@ -21,7 +26,7 @@
     <mat-form-field class="example-full-width">
       <input matInput [(ngModel)] = "mensaje" (keyup.enter)="enviarMensaje()" placeholder="Escribe tu mensaje...">
     </mat-form-field>
-<!--     
+<!-- 
     <button mat-button name="btn-ingresar">Comentar</button>  -->
 
 

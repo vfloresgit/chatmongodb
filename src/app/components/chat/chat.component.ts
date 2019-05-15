@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit {
   //   {comment:"Hola Victor tu tambien me gustas"},
   // ];
   @Input() listaMensajes: any;
+  @Input() dataContact: any;
   // public listaMensajes = [];
   public mensaje = '';
 
@@ -36,8 +37,20 @@ export class ChatComponent implements OnInit {
   
   enviarMensaje(){
 
-    const comunicacion = {
+    for (let contact of this.dataContact) {
       
+      var data_contact = contact.email; // 1, "string", false
+      var nombres_completo = contact.nombres+' '+contact.apellidos
+    }
+    
+    var data_user = localStorage.getItem("email")
+    var emisor_nombres = localStorage.getItem("nombres")
+
+    const comunicacion = {
+      emisor: data_user,
+      emisor_nombre:emisor_nombres,
+      receptor: data_contact,
+      receptor_nombre : nombres_completo,
       mensaje: this.mensaje
 
     }

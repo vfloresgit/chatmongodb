@@ -6,12 +6,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 import {NgModule} from '@angular/core';
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule,MatToolbarModule,
-           MatIconModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatListModule,MatSidenavModule],
+           MatIconModule,MatMenuModule,MatFormFieldModule,MatInputModule,MatListModule,MatSidenavModule,MatDialogModule],
   exports: [MatButtonModule, MatCheckboxModule,MatToolbarModule,MatIconModule,MatMenuModule,
-           MatFormFieldModule,MatInputModule,MatListModule,MatSidenavModule],
+           MatFormFieldModule,MatInputModule,MatListModule,MatSidenavModule,MatDialogModule],
 })
 export class MaterialModule { }

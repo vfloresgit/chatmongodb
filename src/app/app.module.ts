@@ -17,6 +17,8 @@ import { MenuComponent } from './directivas/menu/menu.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BarraLateralContactosComponent } from './directivas/barra-lateral-contactos/barra-lateral-contactos.component';
+// import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
@@ -28,7 +30,9 @@ const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
     ChatComponent,
     MenuComponent,
     LoginComponent,
-    BarraLateralContactosComponent
+    BarraLateralContactosComponent,
+    // MyDialogComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,9 @@ const config: SocketIoConfig = { url:'http://localhost:3000', options:{}};
     APP_ROUTING,
     MaterialModule,
     SocketIoModule.forRoot(config)
+  ],
+  entryComponents:[
+    DialogComponent
   ],
   providers: [UsuariosService,AuthService],
   bootstrap: [AppComponent] 

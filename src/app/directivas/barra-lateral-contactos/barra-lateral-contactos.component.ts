@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 // import { ChatComponent } from '../../components/chat/chat.component';
 import { MensajesService } from 'src/app/services/mensajes.service';
+import {MatDialog} from '@angular/material';
+import { DialogComponent } from '../../dialog/dialog.component';
 
 @Component({
   selector: 'app-barra-lateral-contactos',
@@ -21,6 +23,7 @@ export class BarraLateralContactosComponent implements OnInit {
     );
     public listUsers = []
     public dataUser = []
+    public dataContact = []
     public listaMensajes = [];
 
   constructor(    
@@ -28,7 +31,8 @@ export class BarraLateralContactosComponent implements OnInit {
     public authService: AuthService,
     private usuarioServices: UsuariosService,
     // private chatComponent: ChatComponent,
-    public mensajeService: MensajesService
+    public mensajeService: MensajesService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -66,35 +70,53 @@ export class BarraLateralContactosComponent implements OnInit {
 
   }
 
-  // mensajesDeUsuario(email_contact){
-  
-    
-  //   var email_user = localStorage.getItem("email"); 
-    
-  //   const data = this.chatComponent.listarMensajes(email_contact, email_user)
-
-
-
-
-  // }
 
   
   listarMensajes(email_contact){
 
-    var email_user = localStorage.getItem("email"); 
+        var email_user = localStorage.getItem("email"); 
 
-    this.mensajeService.listadoMensajes(email_contact, email_user).subscribe(
-      (mensajes: any) => {
-        
-       this.listaMensajes = mensajes;
+        var data = {
+          "email":email_contact
+        }
 
-      },
-      (err) => {
+      this.usuarioServices.getUser(data).subscribe(
+
+            (contact: any)=>{
+
+              this.dataContact = contact;
+            
+            },
+            (err)=>{
+
+            }
+
+        )
+
+        this.mensajeService.listadoMensajes(email_contact, email_user).subscribe(
+          (mensajes: any) => {
+            
+          this.listaMensajes = mensajes;
+
+          },
+          (err) => {
 
 
-      }
+          }
+          
+        );
       
-    );
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
