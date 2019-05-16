@@ -5,25 +5,55 @@
         [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
         [mode]="(isHandset$ | async) ? 'over' : 'side'"
         [opened]="!(isHandset$ | async)">
-      <mat-toolbar>CONTACTOS</mat-toolbar>
+      
+       <div style="text-align:center" class="p-2">
+        
+        <div class="text-center">
+          <img src="http://reactionpages.com/mail_imagenes/bg_disnovo.jpg" class="rounded-circle" width="70%" height="120px">
+        </div>
+
+        <div *ngFor = "let d of dataUser">
+              <div class="pt-1">
+              <label style="color:#8C8D8C; font-family: Arial, Helvetica, sans-serif">{{d.nombres}} {{d.apellidos}}</label>
+              <label style="color:#8C8D8C; font-family: Arial, Helvetica, sans-serif">{{d.email}}</label>
+              </div>
+        </div>
+      </div>
+      <hr>
+      <div class="text-center">
+        <label>CONTACTOS</label>
+      </div>
+      
       <mat-nav-list>
 
         <div *ngFor = "let list of listUsers">
-
+      
         <a mat-list-item 
-        (click)="listarMensajes(list.email)">{{list.nombres}}</a>
+        (click)="listarMensajes(list.email)">
+        <span 
+        [matBadge]="cantidad_notifiaciones" 
+        matBadgePosition="above before"
+        matBadgeSize="medium"
+        matBadgeColor="warn"
+        matBadgeOverlap ="false"
+        >{{list.nombres}}</span>
+        </a>
         
       </div>
 
       </mat-nav-list>
     </mat-sidenav>
+
+
     <mat-sidenav-content>
 
       
      <mat-toolbar color="primary">
-      <div *ngFor="let user of dataContact">   
-     <h1> {{user.nombres}} {{user.apellidos}}</h1>
-    </div>
+      
+        <div *ngFor="let user of dataContact">   
+           <h1> {{user.nombres}} {{user.apellidos}}</h1>
+        </div>
+        
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -32,7 +62,11 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-            <button mat-raised-button (click)="openDialog()">Button</button>
+    
+        <div style="width: 100%" class="d-flex flex-row-reverse">
+           <button mat-raised-button (click)="openDialog()">Cerrar Sesion</button>
+        </div>
+
       </mat-toolbar>
        
       <app-chat [listaMensajes]="listaMensajes" [dataContact]="dataContact"></app-chat>

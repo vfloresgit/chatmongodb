@@ -25,6 +25,7 @@ export class BarraLateralContactosComponent implements OnInit {
     public dataUser = []
     public dataContact = []
     public listaMensajes = [];
+    public cantidad_notifiaciones = "9";
 
   constructor(    
     private breakpointObserver: BreakpointObserver,
@@ -43,8 +44,7 @@ export class BarraLateralContactosComponent implements OnInit {
     this.usuarioServices.getUser(email_user).subscribe(
       (result: any)=>{
 
-         this.dataUser = result;
-    
+         this.dataUser = result;    
         
       },
       (err)=>{
@@ -66,6 +66,7 @@ export class BarraLateralContactosComponent implements OnInit {
       }
 
     )
+    
 
 
   }
@@ -110,12 +111,10 @@ export class BarraLateralContactosComponent implements OnInit {
 
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-
-    });
-
+    const dialogRef = this.dialog.open(DialogComponent, {});
+  
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      
     });
   }
 

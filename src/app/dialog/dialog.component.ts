@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
+import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-dialog',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public authservice: AuthService,    
+    public dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { 
+
+
+    }
 
   ngOnInit() {
+  }
+
+  cerrarSesion(): void{
+     
+    this.authservice.logout()
+    this.dialogRef.close();
+     
+  }
+
+  cancelar(): void{
+    this.dialogRef.close();
   }
 
 }

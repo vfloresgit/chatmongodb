@@ -1,10 +1,10 @@
-<h2 mat-dialog-title>Title</h2>
+<h2 mat-dialog-title>Mensaje</h2>
 
 <mat-dialog-content>
-  <p>Would you like to save</p>
+  <p>Esta seguro que desea cerrar sesion?</p>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-button>Cancel</button>
-  <button mat-raised-button>Save</button>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button (click)="cerrarSesion()">Cerrar Sesion</button>
 </mat-dialog-actions>
