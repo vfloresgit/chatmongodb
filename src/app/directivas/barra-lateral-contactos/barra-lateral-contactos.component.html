@@ -85,10 +85,11 @@
 
       </mat-toolbar>
        
-      <app-chat *ngIf="!VerifyDataContact()" [listaMensajes]="listaMensajes" [dataContact]="dataContact">
-
-      </app-chat>
-            
+      <div *ngIf="!VerifyDataContact()" class="container piedepagina">
+          
+          <app-chat [listaMensajes]="listaMensajes" [dataContact]="dataContact"></app-chat>
+      
+      </div> 
       <!-- <footer *ngIf="VerifyDataContact()" class="piedepagina">
           <div class="container">
             <span class="text-muted">Place sticky footer content here.</span>

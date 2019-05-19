@@ -1,7 +1,6 @@
 <div class="container">
 
-    <div>
-      
+    <div>     
 
       <div *ngFor="let item of listaMensajes">
       
@@ -16,12 +15,10 @@
 
 
 
- 
 
     <mat-form-field class="example-full-width">
       <input matInput [(ngModel)] = "mensaje" (keyup.enter)="enviarMensaje()" placeholder="Escribe tu mensaje...">
-    </mat-form-field>
-<!-- 
-    <button mat-button name="btn-ingresar">Comentar</button>  -->
+    </mat-form-field> 
+
     
 </div>
