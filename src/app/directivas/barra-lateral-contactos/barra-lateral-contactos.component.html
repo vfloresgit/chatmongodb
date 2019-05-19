@@ -6,20 +6,24 @@
         [mode]="(isHandset$ | async) ? 'over' : 'side'"
         [opened]="!(isHandset$ | async)">
       
-       <div style="text-align:center" class="p-2">
-        
-        <div class="text-center">
-          <img src="http://reactionpages.com/mail_imagenes/bg_disnovo.jpg" class="rounded-circle" width="70%" height="120px">
+     
+        <div style="text-align:center" class="p-2">
+          
+          <div class="text-center">
+            <img src="http://reactionpages.com/mail_imagenes/bg_disnovo.jpg" class="rounded-circle image-perfil"  height="120px">
+          </div>
+
+          <div *ngFor = "let d of dataUser">
+                <div class="pt-1">
+                <label style="color:#8C8D8C; font-family: Arial, Helvetica, sans-serif">{{d.nombres}} {{d.apellidos}}</label>
+                <label style="color:#8C8D8C; font-family: Arial, Helvetica, sans-serif">{{d.email}}</label>
+                </div>
+          </div>
         </div>
 
-        <div *ngFor = "let d of dataUser">
-              <div class="pt-1">
-              <label style="color:#8C8D8C; font-family: Arial, Helvetica, sans-serif">{{d.nombres}} {{d.apellidos}}</label>
-              <label style="color:#8C8D8C; font-family: Arial, Helvetica, sans-serif">{{d.email}}</label>
-              </div>
-        </div>
-      </div>
+
       <hr>
+      
       <div class="text-center">
         <label>CONTACTOS</label>
       </div>
@@ -27,25 +31,33 @@
       <mat-nav-list>
 
         <div *ngFor = "let list of listUsers">
-      
-        <a mat-list-item 
-        (click)="listarMensajes(list.email)">
-        <span 
-        [matBadge]="cantidad_notifiaciones" 
-        matBadgePosition="above before"
-        matBadgeSize="medium"
-        matBadgeColor="warn"
-        matBadgeOverlap ="false"
-        >{{list.nombres}}</span>
-        </a>
+         
+          <mat-card class="example-card">
+
+            <mat-card-header>
+              <div mat-card-avatar  
+              [matBadge]="cantidad_notifiaciones" 
+              matBadgePosition="above before"
+              matBadgeSize="medium"
+              matBadgeColor="warn"
+              class="example-header-image"></div>
+              <mat-card-title (click)="listarMensajes(list.email)" class="card-title-example">
+                {{list.nombres}}              
+              </mat-card-title>
+              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+
+          </mat-card>
+          
         
-      </div>
+        </div>
 
       </mat-nav-list>
+
     </mat-sidenav>
 
 
-    <mat-sidenav-content>
+    <mat-sidenav-content style="background-color: white">
 
       
      <mat-toolbar color="primary">
@@ -64,12 +76,39 @@
         </button>
     
         <div style="width: 100%" class="d-flex flex-row-reverse">
-           <button mat-raised-button (click)="openDialog()">Cerrar Sesion</button>
+
+          <a (click)="openDialog()" class="material-icons" style="cursor: pointer">
+            exit_to_app
+          </a>
+          
         </div>
 
       </mat-toolbar>
        
-      <app-chat [listaMensajes]="listaMensajes" [dataContact]="dataContact"></app-chat>
+      <app-chat *ngIf="!VerifyDataContact()" [listaMensajes]="listaMensajes" [dataContact]="dataContact">
+
+      </app-chat>
+            
+      <!-- <footer *ngIf="VerifyDataContact()" class="piedepagina">
+          <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
+          </div>
+      </footer> -->
+
+      <div *ngIf="VerifyDataContact()" class="p-5" >
+
+          <div class="container text-center">
+
+     
+            <img src="http://reactionpages.com/mail_imagenes/bg_disnovo.jpg" class="mb-4"  height="120px">
+   
+            <h2 style="font-family: Arial, Helvetica, sans-serif">Te damos la bienvenida a Messenger</h2>
+          
+            <h4 style="color:#8C8D8C;font-family: Arial, Helvetica, sans-serif">Una nueva aplicación que permite a las personas enviar mensajes a sus amigos y familiares</h4>
+
+          </div>
+      
+      </div>
 
       <!-- Add Content Here -->
     </mat-sidenav-content>

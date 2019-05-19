@@ -23,8 +23,10 @@ export class BarraLateralContactosComponent implements OnInit {
     );
     public listUsers = []
     public dataUser = []
-    public dataContact = []
+    // public dataContact = [];
+    public dataContact = null;
     public listaMensajes = [];
+    // public valueDataContact = null;
     public cantidad_notifiaciones = "9";
 
   constructor(    
@@ -116,6 +118,22 @@ export class BarraLateralContactosComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       
     });
+  }
+
+  VerifyDataContact(){
+
+    const value = this.dataContact ;
+
+    
+    if(value == null){
+      
+      return true
+    }else{
+
+      return false
+
+    }
+    
   }
 
 }

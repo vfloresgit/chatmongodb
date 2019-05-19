@@ -1,26 +1,21 @@
 <div class="container">
 
-    
-  <div>
-    <label></label>
-  </div>
+    <div>
+      
 
-  <!-- <div *ngFor="let contact of dataContact">
-  <h1>{{contact.email}}</h1>
-  </div> -->
+      <div *ngFor="let item of listaMensajes">
+      
+        <span class="badge badge-primary">{{item.emisor.nombre}}</span>
+        <p>{{item.mensaje}}</p>
+        <hr>
+      
+      </div>  
 
-  <div class="card-body">
-
-    <div *ngFor="let item of listaMensajes">
-    
-      <span class="badge badge-primary">{{item.emisor.nombre}}</span>
-      <p>{{item.mensaje}}</p>
-      <hr>
-    
     </div>
-   
 
-  </div>
+
+
+
  
 
     <mat-form-field class="example-full-width">
@@ -28,7 +23,5 @@
     </mat-form-field>
 <!-- 
     <button mat-button name="btn-ingresar">Comentar</button>  -->
-
-
-
+    
 </div>
